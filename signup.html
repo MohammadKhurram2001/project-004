@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Design</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4f6;
+        }
+
+        .col-lg-7.info-section.text-center.text-lg-start {
+            position: relative;
+            left: 8%;
+        }
+
+        .background {
+            position: absolute;
+            top: 268px;
+            left: 476px;
+            height: 50%;
+            z-index: -1;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+
+        .wave-content {
+            position: absolute;
+            bottom: 13%;
+            left: 7%;
+            color: white;
+            z-index: 2;
+        }
+
+        .wave-content h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .content-wrapper {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            padding: 50px;
+            display: flex;
+        }
+
+        .people {
+            max-width: 100%;
+        }
+
+        .info-section {
+            color: white;
+            padding: 50px;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            z-index: 2;
+        }
+
+        .info-section h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .login-section {
+            position: relative;
+            width: 70%;
+            margin-right: 0px;
+            right: 14%;
+            padding: 50px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+
+        @media (max-width: 1440px) {
+            .col-lg-7.info-section.text-center.text-lg-start {
+                position: relative;
+                left: 0%;
+
+            }
+
+            .login-section {
+                position: relative;
+                width: 80%;
+                top: -37px;
+                margin-right: 0px;
+                right: 15%;
+                padding: 50px;
+                background-color: white;
+                border-radius: 15px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .wave-content h1 {
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 0.8rem;
+            }
+
+
+            .wave-content {
+                position: absolute;
+                bottom: 14%;
+                left: 5%;
+                color: white;
+                z-index: 2;
+            }
+
+
+            .background {
+                position: absolute;
+                top: 214px;
+                left: 239px;
+                height: 50%;
+                z-index: -1;
+            }
+
+            .wave {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 110%;
+                z-index: 2;
+            }
+
+            .people {
+                max-width: 115%;
+            }
+
+            .logo {
+                width: 50%;
+            }
+
+
+        }
+
+
+
+
+
+
+        @media (max-width: 1024px) {
+            .col-lg-7.info-section.text-center.text-lg-start {
+                position: relative;
+                left: -15%;
+                top: 19px;
+            }
+
+            .people {
+                max-width: 150%;
+            }
+
+            .login-section {
+                position: relative;
+                width: 100%;
+                top: -37px;
+                margin-right: 0px;
+                right: 15%;
+                padding: 50px;
+                background-color: white;
+                border-radius: 15px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .wave {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 134%;
+                z-index: 2;
+            }
+
+            .wave-content {
+                position: absolute;
+                bottom: 8%;
+                left: 5%;
+                color: white;
+                z-index: 2;
+            }
+
+            .background {
+                position: absolute;
+                top: 244px;
+                left: 49px;
+                height: 50%;
+                z-index: -1;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+            .col-lg-7.info-section.text-center.text-lg-start {
+                position: relative;
+                left: 0%;
+                top: 0px;
+            }
+
+            .people {
+                max-width: 70%;
+            }
+
+            .login-section {
+                position: relative;
+                width: 54%;
+                top: -86px;
+                margin-right: 0px;
+                right: 0%;
+                padding: 50px;
+                background-color: white;
+                border-radius: 15px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 3;
+            }
+
+            .info-section {
+                border-radius: 0;
+                text-align: center;
+            }
+
+            .login-section {
+                margin-top: 20px;
+            }
+
+            .wave-content {
+                display: none;
+            }
+
+            .wave-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .background {
+                position: absolute;
+                top: 67px;
+                left: 262px;
+                height: 30%;
+                z-index: -1;
+            }
+
+            .logo {
+                width: 40%;
+            }
+
+            .form-heading {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 425px) {
+            .col-lg-7.info-section.text-center.text-lg-start {
+                position: relative;
+                left: 0%;
+                top: 0px;
+            }
+
+            .people {
+                max-width: 100%;
+            }
+
+            .login-section {
+                position: relative;
+                width: 100%;
+                top: -101px;
+                margin-right: 0px;
+                right: 0%;
+                padding: 50px;
+                background-color: white;
+                border-radius: 15px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 3;
+            }
+
+            .info-section {
+                border-radius: 0;
+                text-align: center;
+            }
+
+            .login-section {
+                margin-top: 20px;
+            }
+
+            .wave-content {
+                display: none;
+            }
+
+            .wave-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .background {
+                position: absolute;
+                top: 56px;
+                left: 129px;
+                height: 20%;
+                z-index: -1;
+            }
+
+            .logo {
+                width: 40%;
+            }
+
+            .form-heading {
+                font-size: 1.2rem;
+            }
+
+            .wave {
+                width: 210%;
+            }
+        }
+        @media (max-width: 425px) {
+            .background {
+        position: absolute;
+        top: 70px;
+        left: 103px;
+        height: 20%;
+        z-index: -1;
+    }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid content-wrapper">
+
+        <img class="background" src="./images/logo.png" alt="Background Image">
+        <div class="row align-items-center">
+            <!-- Info Section -->
+            <div class="col-lg-7 info-section text-center text-lg-start">
+                <img class="people img-fluid mb-4" src="./images/four-person.png" alt="Four People">
+
+            </div>
+
+            <!-- Login Section -->
+            <div class="col-lg-5 d-flex justify-content-center">
+                <div class="login-section">
+                    <div class="text-center mb-4">
+                        <img src="./images/logo-2.png" alt="Logo" class=" logo mb-2 img-fluid">
+                        <h2 class="fw-bold form-heading">Welcome</h2>
+                    </div>
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                            <span class="position-absolute"
+                                style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
+                        <div class="mb-3 text-end">
+                            <a href="#" class="text-decoration-none">Forgot Password? Click Here</a>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p>You Don’t have an account? <a href="#" class="text-decoration-none">Sign Up</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave_div"><img class="wave" src="./images/wave.svg" alt=""></div>
+
+        <div class="wave-content">
+            <h1>Start Managing Your <br> Certifications Now</h1>
+            <p class="mt-3">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. <br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. <br> Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. <br>Excepteur sint occaecat cupidatat non proident."
+            </p>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
