@@ -1,0 +1,153 @@
+/* Fonts stylling */
+*{
+    font-family: "Hanken Grotesk", sans-serif;
+}
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #001BA11A;
+}
+
+/* Navbar Styling */
+.custom-navbar {
+    position: relative;
+    background-color: #1f1f8b;
+    padding: 0.7rem 1.5rem;
+    border-bottom-left-radius: 115px;
+    overflow: hidden;
+    width: 80%;
+}
+
+/* Navbar Content */
+.navbar {
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.navbar-brand .logo {
+    width: 140px;
+    height: auto;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
+/* Language Dropdown */
+.navbar-nav .dropdown-menu {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown Item Styling */
+.navbar-nav .dropdown-item {
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #eaeaea;
+}
+
+/* Upgrade Button */
+.upgrade-btn {
+    font-size: 0.9rem;
+    color: #1f1f8b;
+    background-color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        /* Align items to the left */
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+        /* Full width for links */
+        margin-right: 0;
+        padding: 10px 15px;
+    }
+
+    .upgrade-btn {
+        width: 100%;
+        /* Full width button */
+        margin: 10px 0;
+        /* Add spacing */
+        margin-bottom: 20px;
+    }
+}
+@media (max-width:1024px){
+    .custom-navbar {
+        overflow: visible;
+        width: 85%
+    }
+    .nav-link {
+        
+        font-size: 13px;
+    }
+    
+}
+
+/* footer styling */
+footer {
+    background-color: #f8f9fa;
+    position: relative;
+    margin-top: auto;
+  }
+  
+  footer .container {
+    max-width: 1140px;
+  }
+  
+  footer .list-unstyled li {
+    margin-bottom: 10px;
+  }
+  
+  footer .list-unstyled a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  footer .list-unstyled a:hover {
+    color: #007bff;
+  }
+  
+  footer .bi {
+    margin-right: 8px;
+  }
+  
+  footer .text-center p {
+    margin: 0;
+    color: #6c757d;
+  }
+  
+  /* Ensuring the footer stays at the bottom */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+  }
+  
