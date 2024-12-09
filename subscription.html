@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Clone</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Additional custom styles */
+        .modal-content {
+            border-radius: 10px;
+            border: none;
+        }
+
+        .modal-header {
+            border-bottom: none
+        }
+
+        .modal-body {
+            font-size: 18px;
+        }
+
+        .modal-footer {
+            border-top: none
+        }
+
+        .btn-primary {
+            background-color: #190775;
+            border-color: #190775;
+        }
+
+        .btn-primary:hover {
+            background-color: #190775;
+            border-color: #190775;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Button to trigger the modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscriptionModal">
+        Open Modal
+    </button>
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fw-bolder fs-6" id="exampleModalLabel">Subscription Required</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted">To continue adding more documents, please upgrade to our Premium Plan. Our
+                        free plan allows you to upload up to 5 documents. To enjoy unlimited uploads and additional
+                        premium features, subscribe for only <strong>$10</strong>.</p>
+
+                    <h4 class="text-black">Benefits of the Premium Plan:</h4>
+                    <ul>
+                        <li>Unlimited document uploads</li>
+                        <li>Enhanced storage capabilities</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <p class="text-muted">Stay productive and never run out of space.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-lg w-100">Upgrade Now for $10</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

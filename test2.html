@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f7f9fc;
+        }
+
+        .btn {
+            font-family: 'Arial', sans-serif;
+            /* Uniform font family */
+        }
+
+        .btn-outline-primary {
+            color: #190775 !important;
+            border-color: #190775 !important;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #190775 !important;
+            color: white !important;
+        }
+
+        .btn-primary {
+            background-color: #190775;
+            border-color: #190775;
+        }
+
+        .btn-primary:hover {
+            background-color: #150659;
+            border-color: #150659;
+        }
+
+        .certificate-card {
+            background-color: #e7eefe;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .certificate-img {
+            height: 80px;
+            width: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certificate-img .overlay {
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-img:hover .overlay {
+            opacity: 1;
+        }
+
+        .text-danger {
+            font-weight: bold;
+        }
+
+        .text-success {
+            font-size: 0.9rem;
+        }
+
+        .btn-outline-primary {
+            color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .btn-outline-primary:hover {
+            color: #fff;
+            background-color: #0d6efd;
+        }
+
+        .btn-outline-dark {
+            color: #000;
+            border-color: transparent;
+        }
+
+        .btn-outline-dark:hover {
+            color: #fff;
+            background-color: #000;
+        }
+        /* Modal Stylling */
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-content {
+            border-radius: 8px;
+        }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+
+        /* Your custom CSS for the card design */
+        .icon-box {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            color: #1f1f8b;
+            width: 100%;
+            /* purple color for the text */
+        }
+
+        .icons {
+            font-size: 30px;
+            /* Adjust icon size */
+        }
+
+        /* Make the file inputs hidden, so they don't affect layout */
+        .file-input {
+            display: none;
+        }
+
+        /* Hover effect for cards */
+        .icon-box:hover {
+            background-color: #f7f7f7;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card content styling */
+        .card-title {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-check-label {
+            color: #1f1f8b;
+        }
+
+        .notify-text {
+            color: red;
+            font-size: 0.875rem;
+        }
+
+        .btn-close {
+            color: #1f1f8b;
+        }
+
+        .save-btn {
+            width: 49%;
+            color: #1f1f8b;
+            background-color: white;
+            border: 2px solid;
+        }
+
+        .save-btn:hover {
+            color: white;
+            background-color: #1f1f8b;
+        }
+
+        #hiddenSection {
+            max-height: 0;
+            /* Hidden by default */
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
+        }
+
+        #hiddenSection.visible {
+            max-height: 500px;
+            /* Adjust to a value large enough to fit the content */
+            opacity: 1;
+        }
+        #share-txt-area{
+            width: 100%;
+            height: 250px;
+        }
+        @media (max-width: 768px) {
+            .certificate-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .certificate-img {
+                margin-top: 10px;
+                height: 100px;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+        <div class="row align-items-center w-100 mb-3">
+            <!-- Text Section -->
+            <div class="col-lg-8 col-12 text-lg-start text-center mb-2 mb-lg-0">
+                <h4 class="text-black">See My Certificates ?</h4>
+            </div>
+            <!-- Buttons Section -->
+            <div class="col-lg-4 col-12 d-flex justify-content-center justify-content-lg-end gap-2">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#shareCertificateModal">
+                    <i class="bi bi-share-fill"></i> Share
+                </button>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addCertificateModal">
+                    <i class="bi bi-plus"></i> Add
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Certificate Card1 -->
+        <div class="certificate-card border rounded p-3 mb-3 d-flex align-items-center flex-wrap">
+            <div class="me-3">
+                <input type="checkbox" class="form-check-input">
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Certificate Title:</p>
+                <p class="mb-0">Software Engr.</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Training Center:</p>
+                <p class="mb-0">Houston Training</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Issued Date:</p>
+                <p class="mb-0">08/02/1996</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Expiry Date:</p>
+                <p class="mb-0 text-danger">08/02/2010</p>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-printer"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Status :</p>
+                <p class="mb-0 text-black">Approve</p>
+            </div>
+            <div class="certificate-img position-relative">
+                <img src="images/certificate-img.png" alt="Certificate" class="img-fluid rounded">
+                <div class="overlay position-absolute top-50 start-50 translate-middle text-center text-white fw-bold">
+                    <button class="btn btn-secondary">View Certificate</button>
+                </div>
+            </div>
+        </div>
+        <!-- Certificate Card2 -->
+        <div class="certificate-card border rounded p-3 mb-3 d-flex align-items-center flex-wrap">
+            <div class="me-3">
+                <input type="checkbox" class="form-check-input">
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Certificate Title:</p>
+                <p class="mb-0">Software Engr.</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Training Center:</p>
+                <p class="mb-0">Houston Training</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Issued Date:</p>
+                <p class="mb-0">08/02/1996</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Expiry Date:</p>
+                <p class="mb-0 text-danger">08/02/2010</p>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-printer"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Status :</p>
+                <p class="mb-0 text-black">Approve</p>
+            </div>
+            <div class="certificate-img position-relative">
+                <img src="images/certificate-img.png" alt="Certificate" class="img-fluid rounded">
+                <div class="overlay position-absolute top-50 start-50 translate-middle text-center text-white fw-bold">
+                    <button class="btn btn-secondary">View Certificate</button>
+                </div>
+            </div>
+        </div>
+        <!-- Certificate Card3 -->
+        <div class="certificate-card border rounded p-3 mb-3 d-flex align-items-center flex-wrap">
+            <div class="me-3">
+                <input type="checkbox" class="form-check-input">
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Certificate Title:</p>
+                <p class="mb-0">Software Engr.</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Training Center:</p>
+                <p class="mb-0">Houston Training</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Issued Date:</p>
+                <p class="mb-0">08/02/1996</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Expiry Date:</p>
+                <p class="mb-0 text-danger">08/02/2010</p>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-printer"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Status :</p>
+                <p class="mb-0 text-black">Approve</p>
+            </div>
+            <div class="certificate-img position-relative">
+                <img src="images/certificate-img.png" alt="Certificate" class="img-fluid rounded">
+                <div class="overlay position-absolute top-50 start-50 translate-middle text-center text-white fw-bold">
+                    <button class="btn btn-secondary">View Certificate</button>
+                </div>
+            </div>
+        </div>
+        <!-- Certificate Card4 -->
+        <div class="certificate-card border rounded p-3 mb-3 d-flex align-items-center flex-wrap">
+            <div class="me-3">
+                <input type="checkbox" class="form-check-input">
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Certificate Title:</p>
+                <p class="mb-0">Software Engr.</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Training Center:</p>
+                <p class="mb-0">Houston Training</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Issued Date:</p>
+                <p class="mb-0">08/02/1996</p>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Expiry Date:</p>
+                <p class="mb-0 text-danger">08/02/2010</p>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <button class="btn btn-outline-dark btn-lg">
+                    <i class="bi bi-printer"></i>
+                </button>
+            </div>
+            <div class="me-3">
+                <p class="mb-0 fw-bold">Status :</p>
+                <p class="mb-0 text-black">Approve</p>
+            </div>
+            <div class="certificate-img position-relative">
+                <img src="images/certificate-img.png" alt="Certificate" class="img-fluid rounded">
+                <div class="overlay position-absolute top-50 start-50 translate-middle text-center text-white fw-bold">
+                    <button class="btn btn-secondary">View Certificate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for adding certificate -->
+    <div class="modal fade" id="addCertificateModal" tabindex="-1" aria-labelledby="addCertificateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCertificateModalLabel">Add New Certificate</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Icon boxes layout -->
+                    <div class="row">
+                        <!-- First row with two cards -->
+                        <div class="col-6">
+                            <label for="captureFile" class="icon-box">
+                                <div class="icons">
+                                    <i class="bi bi-camera icons"></i>
+                                </div>
+                                <h5 class="card-title mt-3">Capture</h5>
+                            </label>
+                            <input type="file" id="captureFile" class="file-input" />
+                        </div>
+
+                        <!-- Upload Card -->
+                        <div class="col-6">
+                            <label for="uploadFile" class="icon-box">
+                                <div class="icons">
+                                    <i class="bi bi-upload icons"></i>
+                                </div>
+                                <h5 class="card-title mt-3">Upload</h5>
+                            </label>
+                            <input type="file" id="uploadFile" class="file-input" />
+                        </div>
+
+                        <!-- Driver License Card -->
+                        <div class="col-12">
+                            <label for="driverLicenseFile" class="icon-box">
+                                <div class="icons">
+                                    <i class="bi bi-card-text icons"></i>
+                                </div>
+                                <h5 class="card-title mt-3">Driver License</h5>
+                            </label>
+                            <input type="file" id="driverLicenseFile" class="file-input" />
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="trainingCenter" class="form-label">Training Center</label>
+                            <input type="text" class="form-control" id="trainingCenter">
+                        </div>
+                        <div class="mb-3">
+                            <label for="certificateTitle" class="form-label">Certificate Title</label>
+                            <input type="text" class="form-control" id="certificateTitle">
+                        </div>
+                        <div class="mb-3">
+                            <label for="issuedDate" class="form-label">Issued Date</label>
+                            <input type="date" class="form-control" id="issuedDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="expirationDate" class="form-label">Expiration Date</label>
+                            <input type="date" class="form-control" id="expirationDate">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="notifyMe">
+                            <label class="form-check-label" for="notifyMe">
+                                Notify Me one month before expiration
+                            </label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="certificateFile" class="form-label">Locate your certificate on this
+                                device</label>
+                            <input class="form-control" type="file" id="certificateFile">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="verifyCertification"
+                                onclick="toggleHiddenSection()">
+                            <label class="form-check-label" for="verifyCertification">
+                                Shall we verify your certification?
+                            </label>
+                        </div>
+                        <!-- Hidden Section -->
+                        <div id="hiddenSection" class="hidden-section">
+                            <div class="mb-3">
+                                <label for="instructorName" class="form-label">Instructor Name</label>
+                                <input type="text" class="form-control" id="instructorName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="instructorPhone" class="form-label">Instructor's Phone Number</label>
+                                <input type="text" class="form-control" id="instructorPhone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="certificateNumber" class="form-label">Certificate Number</label>
+                                <input type="text" class="form-control" id="certificateNumber">
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="button" data-bs-dismiss="modal" class="btn save-btn">Close</button>
+                            <button type="button" class="btn save-btn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for share-form certificate -->
+    <div class="modal fade" id="shareCertificateModal" tabindex="-1" aria-labelledby="shareCertificateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCertificateModalLabel">Share My Certificates</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="trainingCenter" class="form-label">Email to Share Certificates?</label>
+                            <input type="text" class="form-control" id="trainingCenter">
+                        </div>
+                        <div class="mb-3">
+                            <label for="certificateTitle" class="form-label">Your message below - <a href="#">please
+                                    customize!</a></label>
+                            <textarea name="" id="share-txt-area"></textarea>
+                        </div>
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="button" data-bs-dismiss="modal" class="btn save-btn">Close</button>
+                            <button type="button" class="btn save-btn">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
