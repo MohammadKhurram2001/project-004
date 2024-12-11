@@ -16,7 +16,6 @@ body {
     background-color: #1f1f8b;
     padding: 0.7rem 1.5rem;
     border-bottom-left-radius: 115px;
-    overflow: hidden;
     width: 80%;
 }
 
@@ -150,4 +149,16 @@ footer {
   footer {
     margin-top: auto; /* Pushes the footer to the bottom */
   }
-  
+  .navbar-toggler-white {
+    border: 2px solid white; /* White border */
+    color: white; /* Text color */
+    background-color: transparent; /* Transparent background */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* White hamburger icon */
+}
+
+.navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Add a slight hover effect */
+}
